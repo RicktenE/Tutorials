@@ -285,7 +285,7 @@ ggplot(filter(modeltranformed, Parameter %in% c("b_intercept", "b_age", "b_age2"
 Alternatively, you can simply make use of the built-in plotting capabilities of Rstan.
 
 ```{r}
-stanplot(model_few_samples, type = "trace")
+mcmc_plot(model_few_samples, type = "trace")
 ```
 
 
@@ -324,7 +324,7 @@ model <- brm(formula = diff ~ 0 + intercept + age + age2,
 
 Obtain the trace plots again.
 ```{r}
-stanplot(model, type = "trace")
+mcmc_plot(model, type = "trace")
 ```
 
 Obtain the Gelman and Rubin diagnostic again.
@@ -394,7 +394,7 @@ _**Question:** What can you conclude about distribution histograms?_
 
 
 ```{r, eval= TRUE}
-stanplot(model, type = "hist")
+mcmc_plot(model, type = "hist")
 ```
 
 _The histograms look smooth and have no gaps or other abnormalities. Based on this, adding more iterations is not necessary. However, if you arenot satisfied, you can improve the number of iterations again. Posterior distributions do not have to be symmetrical, but in this example they seem to be._ 
@@ -403,7 +403,7 @@ _The histograms look smooth and have no gaps or other abnormalities. Based on th
 If we compare this with histograms based on the first analysis (with very few iterations), this difference becomes clear:
 
 ```{r, eval= TRUE}
-stanplot(model_few_samples, type = "hist")
+mcmc_plot(model_few_samples, type = "hist")
 ```
 
 [/expand]
@@ -418,7 +418,7 @@ stanplot(model_few_samples, type = "hist")
 To obtain information about autocorrelation the following syntax can be used:
 
 ```{r, eval= TRUE}
-stanplot(model, pars = 1:4, type = "acf")
+mcmc_plot(model, pars = c('1', '2','3','4', type = "acf")
 ```
 
 _**Question:** What can you conclude about these autocorrelation plots?_
@@ -439,7 +439,7 @@ We plot the posterior distributions and see if they are unimodel (one peak), if 
 
 
 ```{r, eval= TRUE}
-stanplot(model, pars = 1:4, type = "dens")
+mcmc_plot(model, pars = c('1', '2','3','4', type = "dens")
 ```
 
 
